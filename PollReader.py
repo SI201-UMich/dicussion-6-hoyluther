@@ -70,8 +70,6 @@ class PollReader():
             self.data_dict['Trump result'].append(float(seperated[4]))
 
     def highest_polling_candidate(self):
-        max_harris = max(self.data_dict["Harris result"])
-        max_trump
 
         """
         This method should iterate through the result columns and return
@@ -132,6 +130,13 @@ class PollReader():
                    Positive values indicate an increase, negative values indicate a decrease.
         """
         pass
+        early_harris = sum(self.data_dict['Harris result'][-30:]) / 30
+        early_trump = sum(self.data_dict['Trump result'][-30:]) / 30
+
+        late_harris = sum(self.data_dict['Harris result'][-30:]) / 30
+        late_trump = sum(self.data_dict['Trump result'][-30:]) / 30
+
+        return ((late_harris - early_harris), (late_harris - early_trump))
 
 
 class TestPollReader(unittest.TestCase):
